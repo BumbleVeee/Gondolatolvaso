@@ -1,20 +1,48 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package app;
 
-/**
- *
- * @author GubekVeronikaÉva(SZF
- */
 public class KartyaKeveres {
+    static String[] pakli = new String[22];
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main() {
+        feltolt();
+        
+        for (int i = 0; i < 3; i++) {
+            kirak(); //1 tömb
+            melyik(); //scanner
+            kever(); //középre
+        }
+        
+        ezVolt(); //11., az az a középső lesz
+    }
+    
+    public static void feltolt() {
+        String[] kartya={"Ász", "Király", "Felső", "Alsó", "X", "IX"};
+        String[] szin={"P", "T", "Z", "M"};
+        
+        int db = 0;
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (db <21) {
+                    
+                }
+            }
+        }
+    }
+
+    private static void kirak() {
+        
+    }
+
+    private static void melyik() {
+        
+    }
+
+    private static void kever() {
+       
+    }
+
+    private static void ezVolt() {
+    
     }
     
 }
