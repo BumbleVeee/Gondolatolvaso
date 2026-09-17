@@ -12,7 +12,7 @@ public class KartyaKeveres {
         
         for (int i = 0; i < 3; i++) {
             kirak(); //1 tömb 3x7 kártya
-            melyik(); //scanner melyik
+            int oszlop = melyik(); //scanner melyik
             kever(oszlop); //középre
         }
         
@@ -53,7 +53,7 @@ public class KartyaKeveres {
         System.out.println();
     }
 
-    private static void melyik() {
+    private static int melyik() {
         System.out.println("Melyik oszlopban van a kártyád? (1/2/3)");
         int oszlop = obj.nextInt();
         while(oszlop < 1 || oszlop > 3){
@@ -62,36 +62,40 @@ public class KartyaKeveres {
             oszlop = obj.nextInt();
         }
         System.out.println();
+        return oszlop;
     }
 
-    private static String[] kever(int oszlop) {
-        static String[] regiPak = pakli;
-       switch(oszlop){
-           case 1:
-               for (int i = 0; i < 8; i++) {
-                   pakli[i] = regiPak[20-(i-1)*3];
-                   pakli[i] = regiPak[19-(i-1)*3];
-                   pakli[i] = regiPak[21-(i-1)*3];
-               }
-               break;
-           case 2:
-               for (int i = 0; i < 8; i++) {
-                   pakli[i] = regiPak[19-(i-1)*3];
-                   pakli[i] = regiPak[20-(i-1)*3];
-                   pakli[i] = regiPak[21-(i-1)*3];
-               }
-               break;
-           case 3:
-               for (int i = 0; i < 8; i++) {
-                   pakli[i] = regiPak[19-(i-1)*3];
-                   pakli[i] = regiPak[21-(i-1)*3];
-                   pakli[i] = regiPak[20-(i-1)*3];
-               }
-               break;
-           default:
-               System.out.println("Hiba!");
-       }
-       return pakli;
+    private static void kever(int oszlop) {
+        String[] regiPak = new String[22];
+        for (int i = 1; i <= 21; i++) {
+            regiPak[i] = pakli[i];
+        }
+    
+        switch(oszlop) {
+            case 1:
+                for (int i = 1; i <= 7; i++) {
+                    pakli[i]    = regiPak[20-(i-1)*3];
+                    pakli[i+7]  = regiPak[19-(i-1)*3];
+                    pakli[i+14] = regiPak[21-(i-1)*3];
+                }
+                break;
+            
+            case 2:
+                for (int i = 1; i <= 7; i++) {
+                    pakli[i]    = regiPak[19-(i-1)*3];
+                    pakli[i+7]  = regiPak[20-(i-1)*3];
+                    pakli[i+14] = regiPak[21-(i-1)*3];
+                }
+                break;
+            
+            case 3:
+                for (int i = 1; i <= 7; i++) {
+                    pakli[i]    = regiPak[19-(i-1)*3];
+                    pakli[i+7]  = regiPak[21-(i-1)*3];
+                    pakli[i+14] = regiPak[20-(i-1)*3];
+                }
+            break;
+        }
     }
 
     private static void ezVolt() {
