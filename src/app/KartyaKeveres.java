@@ -3,7 +3,9 @@ package app;
 import java.util.Scanner;
 
 public class KartyaKeveres {
-    static String[] pakli = new String[22]; //index 0-21
+    static String[] pakli = new String[22];//index 0-21
+    static Scanner obj = new Scanner(System.in);
+    static String[] kevert = new String[22];
 
     public static void main(String[] args) {
         feltolt(); //feltölti a paklit 21 kártyával
@@ -11,7 +13,7 @@ public class KartyaKeveres {
         for (int i = 0; i < 3; i++) {
             kirak(); //1 tömb 3x7 kártya
             melyik(); //scanner melyik
-            kever(); //középre
+            kever(oszlop); //középre
         }
         
         ezVolt(); //11., az az a középső lesz
@@ -52,14 +54,44 @@ public class KartyaKeveres {
     }
 
     private static void melyik() {
-        Scanner obj = new Scanner(System.in);
         System.out.println("Melyik oszlopban van a kártyád? (1/2/3)");
-        String oszlop = obj.nextLine();
+        int oszlop = obj.nextInt();
+        while(oszlop < 1 || oszlop > 3){
+            System.out.printf("\nHiba! Nincs ilyen oszlop.");
+            System.out.println("\n\nMelyik oszlopban van a kártyád? (1/2/3)");
+            oszlop = obj.nextInt();
+        }
         System.out.println();
     }
 
-    private static void kever() {
-       
+    private static String[] kever(int oszlop) {
+        static String[] regiPak = pakli;
+       switch(oszlop){
+           case 1:
+               for (int i = 0; i < 8; i++) {
+                   pakli[i] = regiPak[20-(i-1)*3];
+                   pakli[i] = regiPak[19-(i-1)*3];
+                   pakli[i] = regiPak[21-(i-1)*3];
+               }
+               break;
+           case 2:
+               for (int i = 0; i < 8; i++) {
+                   pakli[i] = regiPak[19-(i-1)*3];
+                   pakli[i] = regiPak[20-(i-1)*3];
+                   pakli[i] = regiPak[21-(i-1)*3];
+               }
+               break;
+           case 3:
+               for (int i = 0; i < 8; i++) {
+                   pakli[i] = regiPak[19-(i-1)*3];
+                   pakli[i] = regiPak[21-(i-1)*3];
+                   pakli[i] = regiPak[20-(i-1)*3];
+               }
+               break;
+           default:
+               System.out.println("Hiba!");
+       }
+       return pakli;
     }
 
     private static void ezVolt() {
