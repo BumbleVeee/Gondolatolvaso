@@ -10,3 +10,39 @@ A feladat egy kartya trükk elkészítése Netbeansben. Ahol a felhasználó kiv
 ### Maja:
 - Lap osztáyl elkészytése/ besegítés a másik két kód megírásában
 ## OOP felépítése: 
+---
+config:
+  layout: elk
+---
+classDiagram
+direction TB
+    class Lap {
+	    -String ertek
+	    -String szin
+	    +Lap(String ertek, String szin)
+	    +String getErtek()
+	    +String getSzin()
+	    +String megj()
+    }
+
+    class Pakli {
+	    #Lap[] lapok
+	    +Pakli()
+	    +Pakli(int db)
+	    -void feltolt()
+	    +Lap[] getLapok()
+	    +void kever(int valasztottOszlop)
+	    +Lap ezVolt()
+    }
+
+    class Program {
+	    -Scanner sc
+	    +main(String[] args) void
+	    -kirak(Pakli pakli) void
+	    -melyik() int
+	    -trukk(Pakli pakli) void
+    }
+
+    Pakli "1" *-- "21" Lap : contains
+    Program ..> Pakli : uses
+    Program ..> Lap : uses
